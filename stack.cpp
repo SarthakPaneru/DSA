@@ -17,7 +17,7 @@ void display(int arr[], int &x)
 
 void push(int *arr, int &tos)
 {
-    if (tos<max)
+    if (tos<(max-1)) // max-1 since t starts from -1
     {
         ++tos;
         int num;
