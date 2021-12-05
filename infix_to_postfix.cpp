@@ -36,7 +36,7 @@ int priority(char c) {
     if (c == '*' || c == '/') {
         return 2;
     }
-    return -1;
+    //return -1;
 }
 
 int main()
