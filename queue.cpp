@@ -54,7 +54,7 @@ int main()
             if (front != rear) {
                 dequeue();
             } else {
-                cout<<"Array is empty now resetting"<<endl;
+                cout<<"Queue is empty now resetting"<<endl;
                 front = 0;
                 rear = 0;
             }
