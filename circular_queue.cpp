@@ -11,11 +11,22 @@ using namespace std;
 int arr[size];
 int front = -1, rear = -1;
 
+char* position(int x) {
+
+    if(x==front) {
+        return (char*)"(f)";
+    } else if (x==rear) {
+        return (char*)"(r)";
+    } else {
+        return (char*)" ";
+    }
+}
+
 void display() {
     cout<<endl<<"Queue:"<<endl;
-    for (int i = front; i != rear; i=(i+1)%size)
+    for (int i = 0; i < size; ++i)
     {
-        cout<<arr[i]<<"("<<i<<") ";
+        cout<<arr[i]<<position(i)<<" ";
     }
     cout<<endl;
 }
@@ -24,15 +35,12 @@ void enqueue() {
     if (front == -1) {
         ++front;
         ++rear;
-        cout<<"Enter data to add in queue: ";
-        cin>>arr[rear];
-        cout<<arr[rear]<<"("<<rear<<") "<<endl;
     } else {
         rear=(rear+1)%size;
-        cout<<"Enter data to add in queue: ";
-        cin>>arr[rear];
-        display();
     }
+    cout<<"Enter data to add in queue: ";
+    cin>>arr[rear];
+    display();
 }
 
 void dequeue() {
@@ -41,7 +49,7 @@ void dequeue() {
         rear = -1;
         front = -1;
     } else {
-        //arr[front] = NULL;
+        arr[front] = NULL;
         front = (front+1)%size;
     }
     display();
