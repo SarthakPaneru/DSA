@@ -93,12 +93,12 @@ int main()
     }
     cout<<endl;
     cout<<str<<endl;
-    //cout<<strlen(str);
+
     str.copy(temp, strlen(exp), 0);
-    //cout<<strlen(temp);
+
     strrev(temp);
+    
     cout<<temp;
-    //cout<<strlen(str);
     cout<<endl;
     return 0;
 }
