@@ -28,7 +28,7 @@ char pop() {
 }
 
 int priority(char c) {
-    if (c == '(') {
+    if (c == '(' || c == ')') {
         return 0;
     }
     if (c == '+' || c=='-') {
@@ -37,7 +37,9 @@ int priority(char c) {
     if (c == '*' || c == '/') {
         return 2;
     }
-    //return -1;
+    if (c == '^') {
+        return 3;
+    }
 }
 
 void strrev(char *c) {
@@ -54,7 +56,7 @@ void strrev(char *c) {
 
 int main()
 {
-    char exp[20], temp[20]={};
+    char exp[100], temp[100]= {};
     string str;
     
     char *e, x;
@@ -69,24 +71,17 @@ int main()
     while(*e != '\0') {
         if(isAlNum(*e)) {
             x = *e;
-            str += x;
-            //temp += x;
-            //strcat(temp, &x);
-            cout<<*e;
+            str += x;            
         } else if (*e == ')') {
             push(*e);
         } else if (*e == '(') {
             while((x = pop()) != ')') {
                 str += x;
-                //strcat(temp, &x);
-                cout<<x;
             }
         } else {
             while(priority(stack[tos]) > priority(*e)) {
                 x = pop();
                 str += x;
-                //strcat(temp, &x);
-                cout<<x;
             }
             push(*e);
         }
@@ -95,14 +90,15 @@ int main()
     while(tos != -1) {
         x = pop();
         str += x;
-        //strcat(temp, &x);
-        cout<<x;
     }
     cout<<endl;
     cout<<str<<endl;
+    //cout<<strlen(str);
     str.copy(temp, strlen(exp), 0);
+    //cout<<strlen(temp);
     strrev(temp);
     cout<<temp;
+    //cout<<strlen(str);
     cout<<endl;
     return 0;
 }

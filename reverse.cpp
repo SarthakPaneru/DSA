@@ -18,7 +18,7 @@ void strrevs(char *c) {
 
 int main()
 {
-    char c[100] = "ab";
+    char c[100] = "ba";
     cout<<c<<endl;
     strrevs(c);
     cout<<c<<endl;
